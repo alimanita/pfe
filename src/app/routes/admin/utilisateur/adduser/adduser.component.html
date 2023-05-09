@@ -1,0 +1,54 @@
+<page-header></page-header>
+
+<div mat-dialog-content class="content">
+  <form [formGroup]="userform">
+<div class="row">
+  <div class="col md-12">
+    <div class="row">
+      <mat-form-field appearance="outline" >
+        <input matInput placeholder="id" formControlName ="id"
+        [(ngModel)]="utilisateur.id">
+    </mat-form-field >
+    </div>
+   <div class="row">
+    <mat-form-field appearance="outline" >
+      <input matInput placeholder="nom" formControlName ="nom" [(ngModel)]="utilisateur.nom">
+  </mat-form-field >
+  </div>
+ <div class="row">
+  <mat-form-field appearance="outline" >
+    <input matInput placeholder="prenom" formControlName ="prenom" [(ngModel)]="utilisateur.prenom">
+  </mat-form-field >
+ </div>
+   </div>
+
+  <div class="col md-12">
+    <div class="row">
+      <mat-form-field appearance="outline" >
+        <input matInput placeholder="numero de telphone" formControlName ="num_tel" [(ngModel)]="utilisateur.num_tel">
+      </mat-form-field >
+
+     </div>
+     <div class="row">
+      <mat-form-field appearance="outline" >
+        <input matInput placeholder="mot de passe" formControlName ="mot_de_passe" [(ngModel)]="utilisateur.mot_de_passe">
+      </mat-form-field >
+
+     </div>
+  </div>
+</div>
+  </form>
+
+<div class="row">
+<div class="col">
+  <button mat-raised-button  class="btnenregistrer" (click)= "create()" color="primary" style="margin-left: 180%;">
+    Enregistrer
+</button>
+</div>
+<div class="col">
+  <button mat-raised-button  class="btnenregistrer" color="accent" style="margin-left: 50%;" (click)="cancel()">
+    Annuler
+  </button>
+</div>
+</div>
+  </div>

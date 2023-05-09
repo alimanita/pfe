@@ -1,0 +1,19 @@
+<page-header></page-header>
+<div class="row">
+  <div class="col">
+    <mat-form-field >
+      <mat-label>Search</mat-label>
+      <input matInput type="text">
+    </mat-form-field>
+  </div>
+  <div class="col">
+    <button mat-raised-button color="primary" (click)="openajout1()" style="margin-bottom: 20px;" class="buton"
+    > Nouveau Utilisateur</button>
+  </div>
+
+
+<mtx-grid [data]="utili"
+ [columns]="columns"
+ [columnResizable]="true"
+ [pageSizeOptions]="[1,2,5,10]">
+   </mtx-grid>

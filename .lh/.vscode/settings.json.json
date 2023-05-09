@@ -1,0 +1,22 @@
+{
+    "sourceFile": ".vscode/settings.json",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1683374115003,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1683374226516,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,6 +19,6 @@\n   \"ngx-translate.lookup.resourcesPath\": \"src/assets/i18n/zh-CN.json\",\n   \"files.exclude\": {\n     \"**/.svn\": false\n   },\n-  \"local-history.browser.descending\": false,\n+  \"local-history.browser.descending\": true,\n }\n"
+                }
+            ],
+            "date": 1683374115003,
+            "name": "Commit-0",
+            "content": "{\n  \"editor.rulers\": [100],\n  \"html.format.wrapLineLength\": 100,\n  \"html.format.wrapAttributes\": \"preserve-aligned\",\n  \"[javascript]\": {\n    \"editor.defaultFormatter\": \"esbenp.prettier-vscode\"\n  },\n  \"[typescript]\": {\n    \"editor.defaultFormatter\": \"esbenp.prettier-vscode\"\n  },\n  \"[jsonc]\": {\n    \"editor.defaultFormatter\": \"esbenp.prettier-vscode\"\n  },\n  \"editor.codeActionsOnSave\": {\n    \"source.fixAll.eslint\": true,\n    \"source.fixAll.stylelint\": true\n  },\n  \"ngx-translate.lookup.resourcesType\": \"json\",\n  \"ngx-translate.lookup.resourcesPath\": \"src/assets/i18n/zh-CN.json\",\n  \"files.exclude\": {\n    \"**/.svn\": false\n  },\n  \"local-history.browser.descending\": false,\n}\n"
+        }
+    ]
+}

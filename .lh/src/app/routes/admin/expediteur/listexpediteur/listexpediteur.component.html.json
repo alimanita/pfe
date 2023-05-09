@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/app/routes/admin/expediteur/listexpediteur/listexpediteur.component.html",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1683387495684,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1683387495684,
+            "name": "Commit-0",
+            "content": "<page-header></page-header>\n<div class=\"row\">\n  <div class=\"col\">\n    <mat-form-field >\n      <mat-label>Search</mat-label>\n      <input matInput type=\"text\"  [(ngModel)]=\"searchText\">\n    </mat-form-field>\n  </div>\n  <div class=\"col\">\n    <button mat-raised-button color=\"primary\"  routerLink=\"/admin/addexpediteur\"  style=\"margin-bottom: 20px;\" class=\"buton\"\n    > Nouveau Expediteur</button>\n  </div>\n\n   </div>\n\n\n\n   <div class=\"row\" >\n  <!--   <table class=\"table\" style=\"margin-left: 15px;\">\n      <thead>\n        <td>Id</td>\n        <td>Nom</td>\n        <td>Prenom</td>\n        <td>Numero de telephone</td>\n        <td> Action</td>\n      </thead>\n      <tbody>\n        <tr *ngFor=\"let e of exp | search : searchText\">\n          <td>{{e.id}}</td>\n          <td>{{e.nom}}</td>\n          <td>{{e.prenom}}</td>\n          <td>{{e.num_tel}}</td>\n          <td>\n            <button >delete</button>\n            <button>edit</button>\n          </td>\n        </tr>\n      </tbody>\n     </table>\n -->\n <mtx-grid [data]=\"exp | search :  searchText\"\n [columns]=\"columns\"\n [columnResizable]=\"true\"\n [pageSizeOptions]=\"[1,2,5,10]\">\n</mtx-grid>\n  </div>\n"
+        }
+    ]
+}

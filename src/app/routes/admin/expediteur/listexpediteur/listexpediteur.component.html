@@ -1,0 +1,46 @@
+<page-header></page-header>
+<div class="row">
+  <div class="col">
+    <mat-form-field >
+      <mat-label>Search</mat-label>
+      <input matInput type="text"  [(ngModel)]="searchText">
+    </mat-form-field>
+  </div>
+  <div class="col">
+    <button mat-raised-button color="primary"  routerLink="/admin/addexpediteur"  style="margin-bottom: 20px;" class="buton"
+    > Nouveau Expediteur</button>
+  </div>
+
+   </div>
+
+
+
+   <div class="row" >
+  <!--   <table class="table" style="margin-left: 15px;">
+      <thead>
+        <td>Id</td>
+        <td>Nom</td>
+        <td>Prenom</td>
+        <td>Numero de telephone</td>
+        <td> Action</td>
+      </thead>
+      <tbody>
+        <tr *ngFor="let e of exp | search : searchText">
+          <td>{{e.id}}</td>
+          <td>{{e.nom}}</td>
+          <td>{{e.prenom}}</td>
+          <td>{{e.num_tel}}</td>
+          <td>
+            <button >delete</button>
+            <button>edit</button>
+          </td>
+        </tr>
+      </tbody>
+     </table>
+ -->
+ <mtx-grid [data]="exp | search :  searchText"
+ [columns]="columns"
+ [columnResizable]="true"
+ [pageSizeOptions]="[1,2,5,10]">
+</mtx-grid>
+  </div>

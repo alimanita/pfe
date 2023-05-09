@@ -1,0 +1,30 @@
+{
+    "sourceFile": "src/app/routes/client/listcolisclient/listcolisclient.component.ts",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1683378246809,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1683381247867,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -87,9 +87,9 @@\n         this.isActiveUpdate = true;\n \n       })\n     });\n-this.redbyexpediteur(10)\n+this.redbyexpediteur(7)\n //this.redbyexpediteurthis.idToUpdate)\n \n }\n \n"
+                },
+                {
+                    "date": 1683390500802,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -87,9 +87,9 @@\n         this.isActiveUpdate = true;\n \n       })\n     });\n-this.redbyexpediteur(7)\n+this.redbyexpediteur(42)\n //this.redbyexpediteurthis.idToUpdate)\n \n }\n \n"
+                },
+                {
+                    "date": 1683399576307,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -87,9 +87,9 @@\n         this.isActiveUpdate = true;\n \n       })\n     });\n-this.redbyexpediteur(42)\n+this.redbyexpediteur(10)\n //this.redbyexpediteurthis.idToUpdate)\n \n }\n \n"
+                }
+            ],
+            "date": 1683378246809,
+            "name": "Commit-0",
+            "content": "import { Component, OnInit } from '@angular/core';\nimport { Expediteur } from 'app/routes/admin/expediteur/expediteur.model';\nimport { Colis } from '../colis.model';\nimport { Destnateur } from 'app/routes/admin/destinateur/destinateur.model';\nimport { MtxGridColumn } from '@ng-matero/extensions/grid';\nimport { ActivatedRoute, Router } from '@angular/router';\nimport { ColisService } from '../colis.service';\nimport { MatDialog } from '@angular/material/dialog';\nimport { ClientAddcolisclientComponent } from '../addcolisclient/addcolisclient.component';\nimport { MatTableDataSource } from '@angular/material/table';\n\n@Component({\n  selector: 'app-client-listcolisclient',\n  templateUrl: './listcolisclient.component.html',\n  styleUrls: ['./listcolisclient.component.css']\n})\nexport class ClientListcolisclientComponent implements OnInit {\n\n\n  public expidit = new Expediteur('','',0);\npublic searchName = '';\npublic searchText='';\npublic listColis! : Colis[] ;\npublic dataSource : any;\npublic destinat = new Destnateur('','',0);\npublic isActiveUpdate:boolean = false;\npublic idToUpdate!: number\npublic colis = new Colis(0,0,'','',this.destinat ,this.expidit);\npublic iddestinateur !: number;\npublic idExpediteur!:number;\n\n\n\n\ncolumns: MtxGridColumn[] = [\n  { header: 'id', field: 'id' },\n  { header: 'poids', field: 'poids' },\n  { header: 'prix', field: 'prix' },\n  { header: 'dateEnlevement', field: 'dateEnlevement' },\n  { header: 'idDestinateur', field: 'destinateur.id' },\n\n  {\n    header: 'Operation',\n    field: 'operation',\n    width: '180px',\n    pinned: 'right',\n    right: '0px',\n    type: 'button',\n    buttons: [\n      {\n        type: 'icon',\n        text: 'Detail',\n        icon: 'info',\n        tooltip: 'Detail',\n        click: (record) => this.colisdetail(record.id)\n      },\n\n      {\n        type: 'icon',\n        text: 'edit',\n        icon: 'edit',\n        tooltip: 'Edit',\n       click: (record) => this.editnew(record.id)\n      },\n      {\n        type: 'icon',\n        text: 'delete',\n        icon: 'delete',\n        tooltip: 'Delete',\n        color: 'warn',\n        pop: {\n          title: 'Confirm delete?',\n        },\n        click: (record: any) => {this.delete(record.id)},\n      },\n    ],\n  },\n];\n  constructor( private colisservice : ColisService,private  activaterouter: ActivatedRoute,\n    private dialogue:MatDialog , private router : Router) { }\n\n\n  ngOnInit(): void {\n    this.activaterouter.params.subscribe(val=>{\n      this.idToUpdate =val['id'];\n      this.colisservice.readByExpediteur(this.idToUpdate).subscribe(res=>{\n        this.isActiveUpdate = true;\n\n      })\n    });\nthis.redbyexpediteur(10)\n//this.redbyexpediteurthis.idToUpdate)\n\n}\n\n\n\n\n  getiddestinateur(){\n\n  }\n  colisdetail(id : number){\n    this.router.navigate(['/client/detailcolis',id]);\n\n\n  }\n // getcolis(){\n /*    this.colisservice.read().subscribe(res=>{\n      this.listColis=res;\n      this.dataSource = new MatTableDataSource(this.listColis);\n\n\n    }); */\n\n  //}\n\n  editnew(id :number){\n\n    this.router.navigate(['/admin/updateexpediteur',id])\n      }\n\n  openajouteColis(){\n    this.dialogue.open(ClientAddcolisclientComponent,{\n      width:'100%',\n      exitAnimationDuration:'1000ms',\n      enterAnimationDuration:'1000ms',\n\n\n    })\n\n  }\n\n\n  delete(id:any)\n  {\n  this.colisservice .delete(id).subscribe()\n\n\n }\n  redbyexpediteur(id : number){\n  this.colisservice.readByExpediteur(id).subscribe(res =>{\n\n    this.listColis = res;\n    this.dataSource = new MatTableDataSource(this.listColis);\n\n    console.log(res);\n\n  })\n\n }\n\n}\n"
+        }
+    ]
+}

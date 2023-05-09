@@ -1,0 +1,36 @@
+<page-header></page-header>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <mat-form-field >
+        <mat-label>Search</mat-label>
+        <input matInput type="text" [(ngModel)]="searchText">
+      </mat-form-field>
+    </div>
+    <div class="col">
+      <button mat-raised-button color="primary" (click)="openajoutlivreur('')" style="margin-bottom: 20px;" class="buton"
+      > Nouveau Destinateur</button>
+    </div>
+
+     </div>
+     <table class="table">
+      <thead>
+        <td>Id</td>
+        <td>Nom</td>
+        <td>Prenom</td>
+        <td>Numero de telephone</td>
+
+      </thead>
+      <tbody>
+        <tr *ngFor="let e of livreurs | search : searchText">
+          <td>{{e.id}}</td>
+          <td>{{e.nom}}</td>
+          <td>{{e.prenom}}</td>
+          <td>{{e.num_tel}}</td>
+
+        </tr>
+      </tbody>
+     </table>
+</div>
+
+

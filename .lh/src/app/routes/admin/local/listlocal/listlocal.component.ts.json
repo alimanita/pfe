@@ -1,0 +1,30 @@
+{
+    "sourceFile": "src/app/routes/admin/local/listlocal/listlocal.component.ts",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1683385291799,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1683385380464,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -116,10 +116,10 @@\n if(this.dataSource.paginator){\n   this.dataSource.paginator.firstPage();\n }\n }\n-editnew(){\n-  this.router.navigate(['/admin/addlocal']);\n+editnew(id:number){\n+  this.router.navigate(['/admin/addlocal',id]);\n \n }\n }\n \n"
+                },
+                {
+                    "date": 1683385415486,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -117,9 +117,9 @@\n   this.dataSource.paginator.firstPage();\n }\n }\n editnew(id:number){\n-  this.router.navigate(['/admin/addlocal',id]);\n+  this.router.navigate(['/admin/updatelocal',id]);\n \n }\n }\n \n"
+                },
+                {
+                    "date": 1683385459856,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -117,9 +117,9 @@\n   this.dataSource.paginator.firstPage();\n }\n }\n editnew(id:number){\n-  this.router.navigate(['/admin/updatelocal',id]);\n+  this.router.navigate(['/admin/updatelocale',id]);\n \n }\n }\n \n"
+                }
+            ],
+            "date": 1683385291799,
+            "name": "Commit-0",
+            "content": "import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';\nimport { MatDialog, MatDialogConfig } from '@angular/material/dialog';\nimport { MtxGridColumn } from '@ng-matero/extensions/grid';\nimport { AdminLocalAddlocalComponent } from '../addlocal/addlocal.component';\nimport { Local } from '../local.model';\nimport { LocalService } from '../local.service';\n\nimport { MatTableDataSource } from '@angular/material/table';\nimport { Router, RouterLink } from '@angular/router';\nimport { MatPaginator } from '@angular/material/paginator';\n\n@Component({\n  selector: 'app-admin-local-listlocal',\n  templateUrl: './listlocal.component.html',\n  styleUrls: ['./listlocal.component.css']\n})\nexport class AdminLocalListlocalComponent implements AfterViewInit  {\n\n public searchText='';\n  public dataSource = new MatTableDataSource<Local>;\npublic  locals:Local[] =[];\n\npublic local !: Local;\ndisplayedColumns = ['id', 'nom','action']\n@ViewChild(MatPaginator) paginator !: MatPaginator ;\ncolumns: MtxGridColumn[] = [\n  { header: 'id', field: 'id' },\n  { header: 'nom', field: 'nom' },\n\n  {\n    header: 'Operation',\n    field: 'operation',\n    width: '180px',\n    pinned: 'right',\n    right: '0px',\n    type: 'button',\n    buttons: [\n\n      {\n        type: 'icon',\n        text: 'edit',\n        icon: 'edit',\n        tooltip: 'Edit',\n        click: (record ) => this.editnew(record.id),\n      },\n      {\n        type: 'icon',\n        text: 'delete',\n        icon: 'delete',\n        tooltip: 'Delete',\n        color: 'warn',\n        pop: {\n          title: 'Confirm delete?',\n        },\n        click: (record: any) => {this.delete(record.id)},\n      },\n    ],\n  },\n];\nngAfterViewInit() {\n  this.dataSource.paginator = this.paginator;\n}\n\n\n\n\n\n  @ViewChild(AdminLocalAddlocalComponent)\n  adminLocalAddlocalComponent!: AdminLocalAddlocalComponent;\n  constructor( private localservice : LocalService, private router : Router) { }\n\n\n  ngOnInit(): void {\n\n   this.getlocal();\n\n  }\n\n\n\n  open2(){\n    this.adminLocalAddlocalComponent.open();\n  }\n\n\n\n\n\nedit(id : number){\n\n  this.router.navigate(['/admin/addlocal'],{ queryParams: { id } });\n\n}\ndelete(id:any)\n{\nthis.localservice .deletelocal(id).subscribe(res=>{\n  this.getlocal();\n})\n// this.router.navigate(['/updatelocal'], { queryParams: { id: id } });\n}\nedited(id:number){\n  this.router.navigate(['/updatelocal'], { queryParams: { id: id } });\n}\ngetlocal(){\n  this.localservice.read().subscribe(res=>{\n    this.locals=res;\n    this.dataSource = new MatTableDataSource(this.locals);\nthis.dataSource.paginator = this.paginator;\n\n  })\n}\n\napplyfilter(event : Event){\nconst filtervalue = (event.target as HTMLInputElement).value;\nthis.dataSource.filter = filtervalue.trim().toLocaleLowerCase();\nif(this.dataSource.paginator){\n  this.dataSource.paginator.firstPage();\n}\n}\neditnew(){\n  this.router.navigate(['/admin/addlocal']);\n\n}\n}\n\n\n\n\n\n"
+        }
+    ]
+}

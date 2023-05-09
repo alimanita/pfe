@@ -1,0 +1,60 @@
+<page-header></page-header>
+<div class="mat-elevation-z4">
+  <div class="row">
+    <div class="col">
+      <mat-form-field >
+        <mat-label>Search</mat-label>
+        <input matInput type="text" [(ngModel)]="searchText">
+      </mat-form-field>
+   <form [formGroup]="searchform">
+    <mat-form-field >
+      <mat-label>Search Name</mat-label>
+      <input matInput type="text" [(ngModel)]="searchName" formControlName="searchName">
+
+    </mat-form-field>
+   </form>
+      <button mat-raised-button (click)="redbyname(searchName)">chercher</button>
+    </div>
+    <div class="col">
+      <button mat-raised-button color="primary" routerLink="/admin/addlivreur" style="margin-bottom: 20px;"
+       class="buton"
+      > Nouveau Livreur</button>
+    </div>
+
+     </div>
+
+
+  <div class="row" >
+    <!-- <table class="table" style="margin-left: 15px;">
+      <thead>
+        <td>Id</td>
+        <td>Nom</td>
+        <td>Prenom</td>
+        <td>Numero de telephone</td>
+        <td>Action</td>
+      </thead>
+      <tbody>
+        <tr *ngFor="let e of livreurs | search : searchText">
+          <td>{{e.id}}</td>
+          <td>{{e.nom}}</td>
+          <td>{{e.prenom}}</td>
+          <td>{{e.num_tel}}</td>
+          <td>
+            <button [routerLink]="['/admin/updatelivreur',e.id]" (click)="edit(e.id)">edit</button>
+            <button (click)="deletelivreur(e.id)" >delete</button>
+
+          </td>
+        </tr>
+      </tbody>
+     </table> -->
+
+   <mtx-grid [data]="livreurs | search :  searchText"
+   [columns]="columns"
+   [columnResizable]="true"
+   [pageSizeOptions]="[1,2,5,10]">
+  </mtx-grid>
+
+
+  </div>
+
+

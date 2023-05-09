@@ -1,0 +1,30 @@
+{
+    "sourceFile": "src/app/routes/admin/livreur/listlivreur/listlivreur.component.ts",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1683386268558,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1683386377870,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -30,9 +30,9 @@\n     { }\n \n   livreurs!: Livreur[];\n \n-  displayedColumns = ['id', 'nom','prenom', 'num_tel', 'action']\n+  displayedColumns = ['id', 'nom','prenom', 'numtel', 'action']\n   columns: MtxGridColumn[] = [\n     { header: 'id', field: 'id' },\n     { header: 'nom', field: 'nom' },\n     { header: 'prenom', field: 'prenom' },\n"
+                },
+                {
+                    "date": 1683386395588,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -35,9 +35,9 @@\n   columns: MtxGridColumn[] = [\n     { header: 'id', field: 'id' },\n     { header: 'nom', field: 'nom' },\n     { header: 'prenom', field: 'prenom' },\n-    { header: 'num_tel', field: 'num_tel' },\n+    { header: 'num_tel', field: 'numtel' },\n \n     {\n       header: 'Operation',\n       field: 'operation',\n"
+                },
+                {
+                    "date": 1683386402402,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -35,9 +35,9 @@\n   columns: MtxGridColumn[] = [\n     { header: 'id', field: 'id' },\n     { header: 'nom', field: 'nom' },\n     { header: 'prenom', field: 'prenom' },\n-    { header: 'num_tel', field: 'numtel' },\n+    { header: 'numtel', field: 'numtel' },\n \n     {\n       header: 'Operation',\n       field: 'operation',\n"
+                }
+            ],
+            "date": 1683386268558,
+            "name": "Commit-0",
+            "content": "import { Component, OnInit, ViewChild, } from '@angular/core';\n\nimport { MtxGridColumn } from '@ng-matero/extensions/grid';\nimport { LivreurService } from '../livreur.service';\nimport { AdminLivreurAddlivreurComponent } from '../addlivreur/addlivreur.component';\nimport { MatDialog } from '@angular/material/dialog';\nimport { Livreur, } from '../livreur.model';\nimport { AdminLivreurUpdateComponent } from '../update/update.component';\nimport { DialogConfig } from '@angular/cdk/dialog';\nimport { MatTableDataSource } from '@angular/material/table';\nimport { MtxDialog } from '@ng-matero/extensions/dialog';\nimport { FormBuilder, FormControl, FormGroup } from '@angular/forms';\nimport { Router } from '@angular/router';\n@Component({\n  selector: 'app-admin-livreur-listlivreur',\n  templateUrl: './listlivreur.component.html',\n  styleUrls: ['./listlivreur.component.css']\n})\nexport class AdminLivreurListlivreurComponent implements OnInit {\n  searchName = '';\n  searchText='';\n\n  livreur! : Livreur;\n\n\n  dataSource: any;\n\n  constructor(\n    private livreurservice: LivreurService ,private fb: FormBuilder ,private router :Router)\n    { }\n\n  livreurs!: Livreur[];\n\n  displayedColumns = ['id', 'nom','prenom', 'num_tel', 'action']\n  columns: MtxGridColumn[] = [\n    { header: 'id', field: 'id' },\n    { header: 'nom', field: 'nom' },\n    { header: 'prenom', field: 'prenom' },\n    { header: 'num_tel', field: 'num_tel' },\n\n    {\n      header: 'Operation',\n      field: 'operation',\n      width: '180px',\n      pinned: 'right',\n      right: '0px',\n      type: 'button',\n      buttons: [\n\n        {\n          type: 'icon',\n          text: 'edit',\n          icon: 'edit',\n          tooltip: 'Edit',\n          click: (record) => {this.editnew(record.id)\n          }\n        },\n        {\n          type: 'icon',\n          text: 'delete',\n          icon: 'delete',\n          tooltip: 'Delete',\n          color: 'warn',\n          pop: {\n            title: 'Confirm delete?',\n          },\n          click: (record: any) => {this.deletelivreur(record.id)},\n        },\n      ],\n    },\n  ];\n  ngOnInit(): void {\nthis.getlivreur();\n\n  }\n\n  searchform =new FormGroup({\n    searchName : new FormControl()\n  });\n\n  getlivreur(){\n    this.livreurservice.read().subscribe(res=>{\n      this.livreurs=res;\n      this.dataSource = new MatTableDataSource(this.livreurs);\n\n\n    })\n  }\n\n  editnew(id :number){\n\nthis.router.navigate(['/admin/updatelivreur',id])\n  }\n  deletelivreur(id : number){\n  this.livreurservice.deletelivreur(id).subscribe(res=>{\n    this.getlivreur();})\n\n  alert(\"suppression avec succee.\")\n }\n redbyname(name : string){\n  this.livreurservice.readByName(name).subscribe(res=>{\n\n    this.livreurs = res;\n    this.dataSource = new MatTableDataSource(this.livreurs);\n\n    console.log(res);\n    console.log(\"recherche livreur par nom\");\n  })\n\n }\n\n}\n"
+        }
+    ]
+}

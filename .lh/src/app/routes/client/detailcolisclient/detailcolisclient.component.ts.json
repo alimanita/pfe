@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/app/routes/client/detailcolisclient/detailcolisclient.component.ts",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1683378235564,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1683378235564,
+            "name": "Commit-0",
+            "content": "import { Component, OnInit } from '@angular/core';\nimport { Colis } from '../colis.model';\nimport { Destnateur } from 'app/routes/admin/destinateur/destinateur.model';\nimport { FormBuilder, FormGroup, Validators } from '@angular/forms';\nimport { DestinateurService } from 'app/routes/admin/destinateur/destinateur.service';\nimport { ActivatedRoute, Router } from '@angular/router';\n\n@Component({\n  selector: 'app-client-detailcolisclient',\n  templateUrl: './detailcolisclient.component.html',\n  styleUrls: ['./detailcolisclient.component.css']\n})\nexport class ClientDetailcolisclientComponent implements OnInit {\n  public q!:Colis;\n  public dest!:Destnateur;\n  destinateur : Destnateur = {\n    nom:'',\n    prenom: '',\n    num_tel:0\n  }\n  public idToUpdate !: number;\n  public isActiveUpdate : boolean = false\n  public destinateurs!: Destnateur[]\npublic destinateurForm !:FormGroup\n  dataSource: any;\n  constructor(private builder :FormBuilder,private destinateurservice: DestinateurService,\n    private activaterouter : ActivatedRoute ,private router:Router) { }\n\n\n    ngOnInit(): void {\n      this.destinateurForm = this.builder.group({\n        id:this.builder.control({value:'',disabled:true}),\n        nom:this.builder.control('',Validators.required),\n        prenom:this.builder.control('',Validators.required),\n        num_tel:this.builder.control('',Validators.required)\n      });\n\n      this.activaterouter.params.subscribe(val=>{\n        this.idToUpdate =val['id'];\n        this.destinateurservice.readById(this.idToUpdate).subscribe(res=>{\n          this.isActiveUpdate = true;\n          this.fillForm(res);\n        })\n      })\n\n  }\n\n  fillForm(destinateur : Destnateur){\n    this.destinateurForm.setValue({\n      id : destinateur.id,\n      nom : destinateur.nom,\n      prenom: destinateur.prenom,\n      num_tel:destinateur.num_tel\n\n    })\n  }\n\n}\n"
+        }
+    ]
+}

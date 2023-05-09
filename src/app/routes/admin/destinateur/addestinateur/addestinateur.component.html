@@ -1,0 +1,42 @@
+<page-header></page-header>
+
+<div mat-dialog-content class="content">
+  <form [formGroup]="destinateurForm">
+    <div class="row">
+      <mat-form-field appearance="outline" >
+        <input matInput placeholder="id" formControlName ="id">
+    </mat-form-field >
+    </div>
+   <div class="row">
+    <mat-form-field appearance="outline" >
+      <input matInput placeholder="nom" formControlName ="nom">
+  </mat-form-field >
+  <mat-form-field appearance="outline" >
+    <input matInput placeholder="prenom" formControlName ="prenom">
+  </mat-form-field >
+   </div>
+ <div class="row">
+  <mat-form-field appearance="outline" >
+    <input matInput placeholder="numero de telphone" formControlName ="num_tel">
+  </mat-form-field >
+
+ </div>
+  </form>
+  <div class="row">
+    <div class="col">
+      <button mat-raised-button *ngIf="!isActiveUpdate" class="btnenregistrer" (click)= "create()" color="primary" style="margin-left: 180%;">
+        Enregistrer
+    </button>
+    <button mat-raised-button  *ngIf="isActiveUpdate" class="btnenregistrer" (click)= "update()" color="primary"
+    style="margin-left: 180%;">
+      modifier
+  </button>
+    </div>
+    <div class="col">
+      <button mat-raised-button  class="btnenregistrer" color="accent" style="margin-left: 50%;" (click)="cancel()">
+        Annuler
+      </button>
+    </div>
+    </div>
+
+  </div>

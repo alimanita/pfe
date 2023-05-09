@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/app/routes/sessions/login/login.component.ts",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1683472249867,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1683472249867,
+            "name": "Commit-0",
+            "content": "import { Component } from '@angular/core';\nimport { FormBuilder, Validators } from '@angular/forms';\nimport { Router } from '@angular/router';\nimport { HttpErrorResponse } from '@angular/common/http';\nimport { filter } from 'rxjs/operators';\nimport { AuthService } from '@core/authentication';\n\n@Component({\n  selector: 'app-login',\n  templateUrl: './login.component.html',\n  styleUrls: ['./login.component.scss'],\n})\nexport class LoginComponent {\n  isSubmitting = false;\n\n  loginForm = this.fb.nonNullable.group({\n    username: ['manita', [Validators.required]],\n    password: ['manita', [Validators.required]],\n    rememberMe: [false],\n  });\n\n  constructor(private fb: FormBuilder, private router: Router, private auth: AuthService) {}\n\n  get username() {\n    return this.loginForm.get('username')!;\n  }\n\n  get password() {\n    return this.loginForm.get('password')!;\n  }\n\n  get rememberMe() {\n    return this.loginForm.get('rememberMe')!;\n  }\n\n  login() {\n    this.isSubmitting = true;\n\n    this.auth\n      .login(this.username.value, this.password.value, this.rememberMe.value)\n      .pipe(filter(authenticated => authenticated))\n      .subscribe(\n        () => this.router.navigateByUrl('/'),\n        (errorRes: HttpErrorResponse) => {\n          if (errorRes.status === 422) {\n            const form = this.loginForm;\n            const errors = errorRes.error.errors;\n            Object.keys(errors).forEach(key => {\n              form.get(key === 'email' ? 'username' : key)?.setErrors({\n                remote: errors[key][0],\n              });\n            });\n          }\n          this.isSubmitting = false;\n        }\n      );\n  }\n}\n"
+        }
+    ]
+}

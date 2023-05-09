@@ -1,0 +1,33 @@
+<page-header></page-header>
+
+<div mat-dialog-content class="content">
+  <form [formGroup]="transportform" >
+    <div class="row">
+      <mat-form-field appearance="outline" >
+        <input matInput placeholder="id"  name="id" formControlName="id"
+        [ngModel]="transport.id">
+    </mat-form-field >
+    </div>
+   <div class="row">
+  <mat-form-field appearance="outline" >
+      <input matInput placeholder="nom"  name="matricule" formControlName="matricule"
+      [(ngModel)]="transport.matricule"   >
+  </mat-form-field >
+
+
+ </div>
+  </form>
+  <div class="row">
+    <div class="col">
+      <button mat-raised-button  class="btnenregistrer" (click)= "create()" color="primary"
+      style="margin-left: 180%;">
+        Enregistrer
+    </button>
+    </div>
+    <div class="col">
+      <button mat-raised-button  class="btnenregistrer" color="accent" style="margin-left: 50%;" (click)="cancel()">
+        Annuler
+      </button>
+    </div>
+    </div>
+  </div>

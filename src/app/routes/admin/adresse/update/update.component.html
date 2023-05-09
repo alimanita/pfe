@@ -1,0 +1,53 @@
+<page-header></page-header>
+
+<page-header></page-header>
+
+
+
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Form Inline</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <form [formGroup]="reactiveForm1">
+        <mat-form-field class="m-r-8">
+          <mat-label>Pays</mat-label>
+          <input matInput [(ngModel)]="q.pays" name="pays" formControlName="id">
+        </mat-form-field>
+        <mat-form-field class="m-r-8">
+          <mat-label>Ville</mat-label>
+          <input matInput [(ngModel)]="q.ville" name="ville" formControlName="ville">
+        </mat-form-field>
+        <mat-form-field class="m-r-8">
+          <mat-label>Region</mat-label>
+          <input matInput [(ngModel)]="q.region" name="region" formControlName="region">
+        </mat-form-field>
+        <mat-form-field class="m-r-8">
+          <mat-label>Rue</mat-label>
+          <input matInput [(ngModel)]="q.rue" name="rue" formControlName="rue">
+        </mat-form-field>
+        <mat-form-field class="m-r-8">
+          <mat-label>Code Postal</mat-label>
+          <input matInput [(ngModel)]="q.code_postal" name="code_postal" formControlName="code_postal">
+        </mat-form-field>
+
+        <div class="row">
+          <div class="col">
+            <button mat-raised-button  class="btnenregistrer"  color="green" style="margin-left: 180%;"
+            (click)="update()">
+              Valider
+          </button>
+          </div>
+          <div class="col">
+            <button mat-raised-button  class="btnenregistrer" color="accent" style="margin-left: 50%;">
+              Annuler
+            </button>
+          </div>
+          </div>
+
+
+      </form>
+    </mat-card-content>
+  </mat-card>
+

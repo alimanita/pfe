@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/app/routes/client/addcolisclient/addcolisclient.component.html",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1683378230919,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1683378230919,
+            "name": "Commit-0",
+            "content": "<page-header></page-header>\n<button mat-raised-button (click)=\"isLinear = !isLinear\" id=\"toggle-linear\">\n  {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}\n</button>\n<mat-stepper [linear]=\"isLinear\" #stepper>\n  <mat-step [stepControl]=\" formcolis\">\n    <form [formGroup]=\"formcolis\">\n      <ng-template matStepLabel>Information Colis</ng-template>\n      <div class=\"row\">\n        <div class=\"col\">\n          <div class=\"row\">\n            <mat-form-field appearance=\"fill\">\n              <mat-label>Id</mat-label>\n              <input matInput placeholder=\"id\" formControlName=\"id\" >\n            </mat-form-field>\n          </div>\n          <div class=\"row\">\n            <mat-form-field appearance=\"fill\">\n\n              <input matInput\n              [(ngModel)]=\"q.poids\" formControlName=\"poids\" required placeholder=\"poids\">\n            </mat-form-field>\n          </div>\n          <div class=\"row\">\n            <mat-form-field appearance=\"fill\">\n\n              <input matInput placeholder=\"poids\" formControlName=\"poids\" required\n              [(ngModel)]=\"q.poids\">\n            </mat-form-field>\n          </div>\n\n        </div>\n        <div class=\"col\">\n          <div class=\"row\">\n            <mat-form-field appearance=\"fill\">\n\n              <input matInput placeholder=\"dateEnlevement\" formControlName=\"dateEnlevement\" required\n              [(ngModel)]=\"q.dateEnlevement\">\n            </mat-form-field>\n          </div>\n          <div class=\"row\">\n            <mat-form-field appearance=\"fill\">\n\n              <input matInput placeholder=\"statut\" formControlName=\"statut\" required>\n            </mat-form-field>\n          </div>\n\n\n        </div>\n      </div>\n\n\n\n\n\n\n      <div>\n        <button mat-button matStepperNext>Next</button>\n      </div>\n    </form>\n  </mat-step>\n  <mat-step >\n    <form  [formGroup]=\"formadestinateur\">\n\n      <ng-template matStepLabel>Information Destinateur</ng-template>\n\n     <div class=\"row\">\n      <mat-form-field appearance=\"fill\">\n        <mat-label>Id</mat-label>\n        <input matInput placeholder=\"id\" >\n      </mat-form-field>\n     </div>\n   <div class=\"row\">\n    <mat-form-field appearance=\"fill\">\n\n      <input matInput placeholder=\"nom\" formControlName=\"nom\" [(ngModel)]=\"dest.nom\" >\n    </mat-form-field>\n   </div>\n     <div class=\"row\">\n      <mat-form-field appearance=\"fill\">\n\n        <input matInput placeholder=\"prenom\" formControlName=\"prenom\" [(ngModel)]=\"dest.prenom\" >\n      </mat-form-field>\n     </div>\n   <div class=\"row\">\n    <mat-form-field appearance=\"fill\">\n\n      <input matInput placeholder=\"numero de telphone\" formControlName=\"num_tel\" [(ngModel)]=\"dest.num_tel\" >\n    </mat-form-field>\n   </div>\n\n   <button mat-raised-button style=\"margin-left: 85%; background-color: green;\"\n   (click)=\"createcolis()\">Valider</button>\n      <div>\n        <button mat-button matStepperPrevious>Back</button>\n        <button mat-button matStepperNext>Next</button>\n      </div>\n    </form>\n  </mat-step>\n\n</mat-stepper>\n"
+        }
+    ]
+}

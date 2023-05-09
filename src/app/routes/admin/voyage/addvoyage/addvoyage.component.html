@@ -1,0 +1,43 @@
+<page-header></page-header>
+<div>
+  <div class="row" >
+    <div class="col-6">
+
+
+
+      <mat-form-field appearance="fill" class="llivreur">
+        <mat-label>Livreur</mat-label>
+        <select matNativeControl required>
+          <option value="sami">sami</option>
+          <option value="sabri">sabri</option>
+          <option value="kamel">kamel</option>
+          <option value="selk">selk</option>
+        </select>
+      </mat-form-field>
+
+
+
+     </div>
+     <div class="col-6">
+       <button class="ltrans" mat-raised-button>moyen transport</button>
+     </div>
+  </div>
+  <div class="row">
+
+    <mat-form-field style="margin-top: 15px;">
+      <input matInput placeholder="CODE" >
+    </mat-form-field>
+  </div>
+  <div class="row">
+
+
+
+
+  <mtx-grid [data]="voyages"
+  [columns]="columns"
+  [columnResizable]="true"
+  [pageSizeOptions]="[1,2,5,10]">
+    </mtx-grid>
+
+  </div>
+</div>

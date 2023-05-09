@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/app/routes/client/colis.service.ts",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1683378255070,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1683378255070,
+            "name": "Commit-0",
+            "content": "\r\nimport { Injectable } from '@angular/core';\r\n\r\n\r\nimport { HttpClient } from \"@angular/common/http\";\r\nimport { Observable, EMPTY } from \"rxjs\";\r\nimport { map, catchError } from \"rxjs/operators\";\r\nimport { Colis } from './colis.model';\r\n\r\n\r\n\r\n@Injectable({\r\n  providedIn: 'root'\r\n})\r\n\r\nexport class ColisService {\r\n  baseUrl = \"http://localhost:8080/colis/colis\";\r\n\r\nconstructor(private http: HttpClient){}\r\n\r\ncreate(colis: Colis): Observable<Colis> {\r\n\r\n  return this.http.post<Colis>(\"http://localhost:8080/colis/colis/create\", colis);\r\n\r\n\r\n}\r\nread(): Observable<Colis[]> {\r\n\r\n  return this.http.get<Colis[]>(this.baseUrl+'/all').pipe(\r\n    map((obj) => obj),\r\n    catchError((e) => this.errorHandler(e))\r\n  )\r\n\r\n}\r\n\r\n\r\nreadById(id: number): Observable<Colis> {\r\n  const url = `${this.baseUrl}/${id}`;\r\n  return this.http.get<Colis>(url).pipe(\r\n    map((obj) => obj),\r\n    catchError((e) => this.errorHandler(e))\r\n  );\r\n}\r\nreadiddestinateur(): Observable<Colis>{\r\n  return this.http.get<Colis>(\"http://localhost:8080/colis/colis/col/iddestinateur\");\r\n\r\n}\r\nupdate(colis: Colis): Observable<Colis> {\r\n  const url = `${this.baseUrl}/${colis.id}`;\r\n  return this.http.put<Colis>(url, colis).pipe(\r\n    map((obj) => obj),\r\n    catchError((e) => this.errorHandler(e))\r\n  );\r\n}\r\n\r\nreadByExpediteur(id: number): Observable<Colis[]> {\r\n  const url = `http://localhost:8080/colis/colis/list/${id}`;\r\n  return this.http.get<Colis>(url).pipe(map((obj) => obj),\r\n  catchError((e) => this.errorHandler(e))\r\n);\r\n}\r\n\r\nreadByStatut(statut: string): Observable<Colis[]> {\r\n  const url = `http://localhost:8080/colis/colis/col/${statut}`;\r\n  return this.http.get<Colis>(url).pipe(map((obj) => obj),\r\n  catchError((e) => this.errorHandler(e))\r\n);\r\n}\r\n\r\nerrorHandler(e: any): Observable<any> {\r\n\r\n  return EMPTY;\r\n}\r\n\r\n\r\n\r\n\r\ndelete(id: number):Observable<Colis>{\r\nreturn this.http.delete<Colis>(`${this.baseUrl+'/delete'}/${id}`);\r\n}\r\n}\r\n"
+        }
+    ]
+}

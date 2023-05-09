@@ -1,0 +1,101 @@
+<page-header></page-header>
+<button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
+  {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
+</button>
+<mat-stepper [linear]="isLinear" #stepper>
+  <mat-step [stepControl]=" formcolis">
+    <form [formGroup]="formcolis">
+      <ng-template matStepLabel>Information Colis</ng-template>
+      <div class="row">
+        <div class="col">
+          <div class="row">
+            <mat-form-field appearance="fill">
+              <mat-label>Id</mat-label>
+              <input matInput placeholder="id" formControlName="id" >
+            </mat-form-field>
+          </div>
+          <div class="row">
+            <mat-form-field appearance="fill">
+
+              <input matInput
+              [(ngModel)]="q.poids" formControlName="poids" required placeholder="poids">
+            </mat-form-field>
+          </div>
+          <div class="row">
+            <mat-form-field appearance="fill">
+
+              <input matInput placeholder="poids" formControlName="poids" required
+              [(ngModel)]="q.poids">
+            </mat-form-field>
+          </div>
+
+        </div>
+        <div class="col">
+          <div class="row">
+            <mat-form-field appearance="fill">
+
+              <input matInput placeholder="dateEnlevement" formControlName="dateEnlevement" required
+              [(ngModel)]="q.dateEnlevement">
+            </mat-form-field>
+          </div>
+          <div class="row">
+            <mat-form-field appearance="fill">
+
+              <input matInput placeholder="statut" formControlName="statut" required>
+            </mat-form-field>
+          </div>
+
+
+        </div>
+      </div>
+
+
+
+
+
+
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step >
+    <form  [formGroup]="formadestinateur">
+
+      <ng-template matStepLabel>Information Destinateur</ng-template>
+
+     <div class="row">
+      <mat-form-field appearance="fill">
+        <mat-label>Id</mat-label>
+        <input matInput placeholder="id" >
+      </mat-form-field>
+     </div>
+   <div class="row">
+    <mat-form-field appearance="fill">
+
+      <input matInput placeholder="nom" formControlName="nom" [(ngModel)]="dest.nom" >
+    </mat-form-field>
+   </div>
+     <div class="row">
+      <mat-form-field appearance="fill">
+
+        <input matInput placeholder="prenom" formControlName="prenom" [(ngModel)]="dest.prenom" >
+      </mat-form-field>
+     </div>
+   <div class="row">
+    <mat-form-field appearance="fill">
+
+      <input matInput placeholder="numero de telphone" formControlName="num_tel" [(ngModel)]="dest.num_tel" >
+    </mat-form-field>
+   </div>
+
+   <button mat-raised-button style="margin-left: 85%; background-color: green;"
+   (click)="createcolis()">Valider</button>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+
+</mat-stepper>

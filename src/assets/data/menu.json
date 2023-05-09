@@ -1,0 +1,151 @@
+{
+  "menu": [
+    {
+      "route": "dashboard",
+      "name": "dashboard",
+      "type": "link",
+      "icon": "dashboard"
+    },
+    {
+      "route": "admin",
+      "name": "admin",
+      "type": "sub",
+      "icon": "dashboard",
+      "permissions": {
+        "only": "ADMIN"
+      },
+      "children": [
+        {
+          "route": "listexpediteur",
+          "name": "mesexpediteur",
+          "type": "link"
+        },
+        {
+          "route": "listlivreur",
+          "name": "mesLivreurs",
+          "type": "link"
+        },
+
+        {
+          "route": "listadresse",
+          "name": "mesAdresses",
+          "type": "link"
+        },
+        {
+          "route": "listlocal",
+          "name": "mesLocals",
+          "type": "link"
+        },
+
+        {
+          "route": "listdestinateur",
+          "name": "mesDestinateur",
+          "type": "link"
+        },
+        {
+          "route": "listutilisateur",
+          "name": "mesUtilisateur",
+          "type": "link"
+        },
+        {
+          "route": "listtransport",
+          "name": "mesTransport",
+          "type": "link"
+        },
+
+
+        {
+          "route": "listvoyage",
+          "name": "mesVoyage",
+          "type": "link"
+        }
+
+
+      ]
+    },
+    {
+
+
+      "route": "chefagence",
+      "name": "chefagence",
+      "type": "sub",
+      "icon": "dashboard",
+      "permissions": {
+        "except":["CLIENT","LIVREUR"] 
+      },
+      "children": [
+        {
+          "route": "listcolischef",
+          "name": "mescolis",
+          "type": "link"
+        }
+      ]
+
+
+
+    },
+    {
+
+
+      "route": "livreur",
+      "name": "livreur",
+      "type": "sub",
+      "icon": "dashboard",
+      "permissions": {
+        "except":["CLIENT","CHEFAGENCE"] 
+      },
+      "children": [
+        {
+          "route": "listcolislivreur",
+          "name": "mescolis",
+          "type": "link"
+        }
+      ]
+
+
+
+    },
+    {
+
+
+      "route": "client",
+      "name": "client",
+      "type": "sub",
+      "icon": "dashboard",
+      "children": [
+        {
+          "route": "listcolisclient",
+          "name": "mescolis",
+          "type": "link"
+        }
+      ]
+
+
+
+    },
+
+    {
+      "route": "/",
+      "name": "sessions",
+      "type": "sub",
+      "icon": "question_answer",
+      "children": [
+        {
+          "route": "403",
+          "name": "403",
+          "type": "link"
+        },
+        {
+          "route": "404",
+          "name": "404",
+          "type": "link"
+        },
+        {
+          "route": "500",
+          "name": "500",
+          "type": "link"
+        }
+      ]
+    }
+  ]
+}

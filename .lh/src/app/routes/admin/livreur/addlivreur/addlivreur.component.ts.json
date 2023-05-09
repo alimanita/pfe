@@ -1,0 +1,38 @@
+{
+    "sourceFile": "src/app/routes/admin/livreur/addlivreur/addlivreur.component.ts",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 5,
+            "patches": [
+                {
+                    "date": 1683385860141,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1683385904239,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -88,9 +88,9 @@\n \n       this.router.navigate(['/admin/listlivreur'])\n      alert(\"enregistrement avec succee.\")\n \n-    })\n+    });\n     this.livreureurform.reset();\n   }\n \n   cancel(): void {\n"
+                },
+                {
+                    "date": 1683385970088,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -89,9 +89,9 @@\n       this.router.navigate(['/admin/listlivreur'])\n      alert(\"enregistrement avec succee.\")\n \n     });\n-    this.livreureurform.reset();\n+this.getlivreur();\n   }\n \n   cancel(): void {\n \n"
+                },
+                {
+                    "date": 1683386022954,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -85,13 +85,14 @@\n \n     this.livreurservice.create(this.livreur).subscribe(() => {\n \n \n-      this.router.navigate(['/admin/listlivreur'])\n-     alert(\"enregistrement avec succee.\")\n \n+     alert(\"enregistrement avec succee.\");\n+     this.router.navigate(['/admin/listlivreur'])\n+\n     });\n-this.getlivreur();\n+\n   }\n \n   cancel(): void {\n \n"
+                },
+                {
+                    "date": 1683386095196,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -87,9 +87,9 @@\n \n \n \n      alert(\"enregistrement avec succee.\");\n-     this.router.navigate(['/admin/listlivreur'])\n+this.cancel();\n \n     });\n \n   }\n"
+                },
+                {
+                    "date": 1683386498825,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,9 +15,9 @@\n   livreur : Livreur = {\n \n     nom:'',\n     prenom: '',\n-    num_tel:0\n+    numtel:0\n   }\n   livreurs!: Livreur[];\n   showModal: boolean = false;\n   public liv:Livreur={} as Livreur;\n@@ -52,9 +52,9 @@\n   this.livreureurform.setValue({\n     id : livreur.id,\n     nom : livreur.nom,\n     prenom: livreur.prenom,\n-    num_tel:livreur.num_tel\n+    num_tel:livreur.numtel\n \n   })\n }\n update(){\n"
+                }
+            ],
+            "date": 1683385860141,
+            "name": "Commit-0",
+            "content": "import { Component, Inject, OnInit } from '@angular/core';\nimport { FormBuilder, FormGroup, Validators,Form } from '@angular/forms';\nimport { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';\nimport { ActivatedRoute, Router } from '@angular/router';\nimport { Livreur } from '../livreur.model';\nimport { LivreurService } from '../livreur.service';\nimport { MatTableDataSource } from '@angular/material/table';\n\n@Component({\n  selector: 'app-admin-livreur-addlivreur',\n  templateUrl: './addlivreur.component.html',\n  styleUrls: ['./addlivreur.component.css']\n})\nexport class AdminLivreurAddlivreurComponent implements OnInit {\n  livreur : Livreur = {\n\n    nom:'',\n    prenom: '',\n    num_tel:0\n  }\n  livreurs!: Livreur[];\n  showModal: boolean = false;\n  public liv:Livreur={} as Livreur;\n  livreureurform!:FormGroup\n  dataSource: any;\n  public idlocalToUpdate !: number;\n  public isActiveUpdate : boolean = false\n\n  constructor(private builder:FormBuilder,private activaterouter: ActivatedRoute ,\n     private livreurservice: LivreurService,private dialogue:MatDialog,\n      private router: Router\n\n      ) { }\n\n  ngOnInit(): void {\n    this.livreureurform = this.builder.group({\n      id:this.builder.control({value:'',disabled:true}),\n      nom:this.builder.control('',Validators.required),\n      prenom:this.builder.control('',Validators.required),\n      num_tel:this.builder.control('',Validators.required)\n    });\n\n    this.activaterouter.params.subscribe(val=>{\n      this.idlocalToUpdate =val['id'];\n      this.livreurservice.readById(this.idlocalToUpdate).subscribe(res=>{\n        this.isActiveUpdate = true;\n        this.fillForm(res);\n      })\n    })\n}\nfillForm(livreur : Livreur){\n  this.livreureurform.setValue({\n    id : livreur.id,\n    nom : livreur.nom,\n    prenom: livreur.prenom,\n    num_tel:livreur.num_tel\n\n  })\n}\nupdate(){\n\n\n  this.livreurservice.update(this.livreureurform.value).subscribe(() => {\n\n\n    alert(\"modification avec succee.\");\n    this.getlivreur();\n    this.router.navigate(['/admin/listlivreur'])\n\n   });\nthis.livreureurform.reset();\n\n\n}\ngetlivreur(){\n  this.livreurservice.read().subscribe(res=>{\n    this.livreurs=res;\n    this.dataSource = new MatTableDataSource(this.livreurs);\n\n\n  })\n}\n\n  create(): void {\n\n    this.livreurservice.create(this.livreur).subscribe(() => {\n\n\n      this.router.navigate(['/admin/listlivreur'])\n     alert(\"enregistrement avec succee.\")\n\n    })\n    this.livreureurform.reset();\n  }\n\n  cancel(): void {\n\n    this.router.navigate(['/admin/listlivreur'])\n  }\n\n\n\n  createlev(){\nreturn this.livreurservice.createliv(this.livreur).subscribe((data:Livreur)=>{\n  this.router.navigate(['/admin/listlivreur'])\n})\n  }\n  open(){\n    this.showModal = true;\n  }\n  close(){\n    this.showModal = false;\n  }\n  create1(){\n\n    this.livreurservice.create(this.livreur).subscribe(() => {\n\n\n     alert(\"enregistrement avec succee.\")\n    });\n\n  }\n}\n"
+        }
+    ]
+}

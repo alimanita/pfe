@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/app/routes/client/addcolisclient/addcolisclient.component.ts",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1683378279180,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1683378279180,
+            "name": "Commit-0",
+            "content": "import { Component, OnInit } from '@angular/core';\nimport { Destnateur } from 'app/routes/admin/destinateur/destinateur.model';\nimport { Colis } from '../colis.model';\nimport { FormBuilder, Validators } from '@angular/forms';\nimport { ColisService } from '../colis.service';\nimport { Router } from '@angular/router';\n\n@Component({\n  selector: 'app-client-addcolisclient',\n  templateUrl: './addcolisclient.component.html',\n  styleUrls: ['./addcolisclient.component.css']\n})\nexport class ClientAddcolisclientComponent implements OnInit {\n\n  public q:Colis;\n  public dest:Destnateur;\n\n    constructor(private _formBuilder:FormBuilder,private colisservice : ColisService,private router : Router) {\n      this.dest = {\n        nom :\"\",\n        prenom : \"\",\n        num_tel:0\n      }\n\n      this.q = {poids : 0,\n        prix : 0,\n\n      dateEnlevement :\"\",\n\n        statut : \"\",\n    destinateur : this.dest\n      }\n\n    }\n\n    formcolis=this._formBuilder.group({\n      id:this._formBuilder.control({value: '',disabled:true}),\n      poids:['',Validators.required],\n      prix:['',Validators.required],\n      dateEnlevement:['',Validators.required],\n      statut:['',Validators.required]\n\n    });\n    formadresse=this._formBuilder.group({\n      id:this._formBuilder.control({value:'',disabled:true}),\n      pays: ['', [Validators.required]],\n      ville: ['', [Validators.required]],\n      region: ['', [Validators.required]],\n      rue: ['', [Validators.required]],\n      code_postal: ['', [Validators.required]],\n\n    });\n    formadestinateur=this._formBuilder.group({\n      id:this._formBuilder.control({value:'',disabled:true}),\n      nom: ['', [Validators.required]],\n      prenom: ['', [Validators.required]],\n      num_tel: ['', [Validators.required]],\n\n\n    });\n    secondFormGroup = this._formBuilder.group({\n      secondCtrl: ['', Validators.required],\n    });\n    isLinear = false;\n\n    ngOnInit() {\n\n\n\n    }\n\n      createcolis(): void {\n\n\n        this.colisservice.create(this.q).subscribe(() => {\n\n          console.log(\"enregistrement\");\nthis.router.navigate(['/client/listcolis']);\n         })\n\n\n\n  }\n\n}\n"
+        }
+    ]
+}

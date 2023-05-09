@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/app/routes/chefagence/chefagence.module.ts",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1683378282713,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1683378282713,
+            "name": "Commit-0",
+            "content": "import { NgModule } from '@angular/core';\nimport { SharedModule } from '@shared/shared.module';\nimport { ChefagenceRoutingModule } from './chefagence-routing.module';\nimport { ChefagenceListcolischefComponent } from './listcolischef/listcolischef.component';\nimport { ChefagenceListcolisclientComponent } from './listcolisclient/listcolisclient.component';\nimport { SearchChefAgPipe } from '@shared/pipes/searchchefag.pipe';\n\nconst COMPONENTS: any[] = [ChefagenceListcolischefComponent, SearchChefAgPipe,ChefagenceListcolisclientComponent];\nconst COMPONENTS_DYNAMIC: any[] = [];\n\n@NgModule({\n  imports: [\n    SharedModule,\n    ChefagenceRoutingModule\n  ],\n  declarations: [\n    ...COMPONENTS,\n    ...COMPONENTS_DYNAMIC\n  ]\n})\nexport class ChefagenceModule { }\n"
+        }
+    ]
+}

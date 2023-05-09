@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/app/routes/client/client.module.ts",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1683377928964,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1683377928964,
+            "name": "Commit-0",
+            "content": "import { NgModule } from '@angular/core';\nimport { SharedModule } from '@shared/shared.module';\nimport { ClientRoutingModule } from './client-routing.module';\nimport { ClientAddcolisclientComponent } from './addcolisclient/addcolisclient.component';\nimport { ClientListcolisclientComponent } from './listcolisclient/listcolisclient.component';\nimport { ClientDetailcolisclientComponent } from './detailcolisclient/detailcolisclient.component';\nimport { SearchClientPipe } from '@shared/pipes/searchclient.pipe';\n\nconst COMPONENTS: any[] = [ClientAddcolisclientComponent,\n   ClientListcolisclientComponent,\n    ClientDetailcolisclientComponent,\n    SearchClientPipe]\n\nconst COMPONENTS_DYNAMIC: any[] = [];\n\n@NgModule({\n  imports: [\n    SharedModule,\n    ClientRoutingModule\n  ],\n  declarations: [\n    ...COMPONENTS,\n    ...COMPONENTS_DYNAMIC\n  ]\n})\nexport class ClientModule { }\n"
+        }
+    ]
+}

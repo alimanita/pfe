@@ -1,0 +1,18 @@
+{
+    "sourceFile": "src/assets/data/menu.json",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1683378435522,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1683378435522,
+            "name": "Commit-0",
+            "content": "{\n  \"menu\": [\n    {\n      \"route\": \"dashboard\",\n      \"name\": \"dashboard\",\n      \"type\": \"link\",\n      \"icon\": \"dashboard\"\n\n    },\n    {\n      \"route\": \"admin\",\n      \"name\": \"admin\",\n      \"type\": \"sub\",\n      \"icon\": \"dashboard\",\n      \"children\": [\n        {\n          \"route\": \"listexpediteur\",\n          \"name\": \"mesexpediteur\",\n          \"type\": \"link\"\n        },\n        {\n          \"route\": \"listlivreur\",\n          \"name\": \"mesLivreurs\",\n          \"type\": \"link\"\n        },\n\n        {\n          \"route\": \"listadresse\",\n          \"name\": \"mesAdresses\",\n          \"type\": \"link\"\n        },\n        {\n          \"route\": \"listlocal\",\n          \"name\": \"mesLocals\",\n          \"type\": \"link\"\n        },\n\n        {\n          \"route\": \"listdestinateur\",\n          \"name\": \"mesDestinateur\",\n          \"type\": \"link\"\n        },\n        {\n          \"route\": \"listutilisateur\",\n          \"name\": \"mesUtilisateur\",\n          \"type\": \"link\"\n        },\n        {\n          \"route\": \"listtransport\",\n          \"name\": \"mesTransport\",\n          \"type\": \"link\"\n        },\n\n\n        {\n          \"route\": \"listvoyage\",\n          \"name\": \"mesVoyage\",\n          \"type\": \"link\"\n        }\n\n\n      ]\n    },\n    {\n\n\n      \"route\": \"chefagence\",\n      \"name\": \"chefagence\",\n      \"type\": \"sub\",\n      \"icon\": \"dashboard\",\n      \"children\": [\n        {\n          \"route\": \"listcolischef\",\n          \"name\": \"mescolis\",\n          \"type\": \"link\"\n        }\n      ]\n\n\n\n    },\n    {\n\n\n      \"route\": \"livreur\",\n      \"name\": \"livreur\",\n      \"type\": \"sub\",\n      \"icon\": \"dashboard\",\n      \"children\": [\n        {\n          \"route\": \"listcolislivreur\",\n          \"name\": \"mescolis\",\n          \"type\": \"link\"\n        }\n      ]\n\n\n\n    },\n    {\n\n\n      \"route\": \"client\",\n      \"name\": \"client\",\n      \"type\": \"sub\",\n      \"icon\": \"dashboard\",\n      \"children\": [\n        {\n          \"route\": \"listcolisclient\",\n          \"name\": \"mescolis\",\n          \"type\": \"link\"\n        }\n      ]\n\n\n\n    },\n\n    {\n      \"route\": \"/\",\n      \"name\": \"sessions\",\n      \"type\": \"sub\",\n      \"icon\": \"question_answer\",\n      \"children\": [\n        {\n          \"route\": \"403\",\n          \"name\": \"403\",\n          \"type\": \"link\"\n        },\n        {\n          \"route\": \"404\",\n          \"name\": \"404\",\n          \"type\": \"link\"\n        },\n        {\n          \"route\": \"500\",\n          \"name\": \"500\",\n          \"type\": \"link\"\n        }\n      ]\n    }\n  ]\n}\n"
+        }
+    ]
+}

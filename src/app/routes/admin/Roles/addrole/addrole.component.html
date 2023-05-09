@@ -1,0 +1,38 @@
+<page-header></page-header>
+
+
+<div mat-dialog-content class="content">
+  <form [formGroup]="groupform" >
+    <div class="row">
+      <mat-form-field appearance="outline" >
+        <input matInput placeholder="id"  name="id" formControlName="id"
+        [ngModel]="role.id">
+    </mat-form-field >
+    </div>
+   <div class="row">
+    <mat-form-field appearance="outline" >
+      <input matInput placeholder="nom"  name="nom" formControlName="nom"
+      [(ngModel)]="role.nom">
+  </mat-form-field >
+
+
+ </div>
+  </form>
+  <div class="row">
+    <div class="col">
+      <button mat-raised-button *ngIf="!isActiveUpdate" class="btnenregistrer" (click)= "create()" color="primary"
+      style="margin-left: 180%;">
+        Enregistrer
+    </button>
+    <button mat-raised-button  *ngIf="isActiveUpdate" class="btnenregistrer" (click)= "update()" color="primary"
+    style="margin-left: 180%;">
+      modifier
+  </button>
+    </div>
+    <div class="col">
+      <button mat-raised-button  class="btnenregistrer" color="accent" (click)="cancel()" style="margin-left: 50%;">
+        Annuler
+      </button>
+    </div>
+    </div>
+  </div>

@@ -1,0 +1,44 @@
+<div *ngIf="showModal"></div>
+<page-header></page-header>
+
+<div mat-dialog-content class="content">
+  <form [formGroup]="livreureurform">
+    <div class="row">
+      <mat-form-field appearance="outline" >
+        <input matInput placeholder="id" formControlName ="id" [(ngModel)]="livreur.id">
+    </mat-form-field >
+    </div>
+   <div class="row">
+    <mat-form-field appearance="outline" >
+      <input matInput placeholder="nom" formControlName ="nom" [(ngModel)]="livreur.nom">
+  </mat-form-field >
+  <mat-form-field appearance="outline" >
+    <input matInput placeholder="prenom" formControlName ="prenom" [(ngModel)]="livreur.prenom">
+  </mat-form-field >
+   </div>
+ <div class="row">
+  <mat-form-field appearance="outline" >
+    <input matInput  placeholder="numero de telphone"  formControlName ="numtel"  [(ngModel)]="livreur.numtel">
+  </mat-form-field >
+
+ </div>
+
+  </form>
+   <div class="row">
+    <div class="col">
+      <button mat-raised-button  *ngIf="!isActiveUpdate" class="btnenregistrer" (click)= "create1()" color="primary" style="margin-left: 180%;">
+        Enregistrer
+    </button>
+    <button mat-raised-button  *ngIf="isActiveUpdate" class="btnenregistrer" (click)= "update()" color="primary"
+    style="margin-left: 180%;">
+      modifier
+  </button>
+    </div>
+    <div class="col">
+      <button mat-raised-button  class="btnenregistrer" color="accent" (click)="cancel()" style="margin-left: 50%;">
+        Annuler
+      </button>
+    </div>
+    </div>
+
+
